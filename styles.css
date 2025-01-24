@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f7f8fa;
+    color: #333;
+    padding: 20px;
+}
+#mood-container button {
+    padding: 10px 20px;
+    font-size: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#mood-container button:hover {
+    transform: scale(1.1);
+}
+#log {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+}

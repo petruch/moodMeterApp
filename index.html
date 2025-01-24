@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Meter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #f5f7fa;
+            color: #333;
+            overflow-y: auto;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+        .mood-chart {
+            
+    width: 100%;
+    height: calc(100vh - 115px);
+    min-width: 400px;
+    position: relative;
+    display: grid
+;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 4px;
+    justify-items: stretch;
+    align-items: stretch;
+        }
+        .mood-quadrant {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 4px;
+    justify-items: stretch;
+    align-items: stretch;
+    border-radius: 4px;
+}
+
+        .mood-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 6px;
+            justify-content: center;
+            width: 80%;
+            
+        }
+
+        .mood-button {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .mood-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Color categories for moods */
+        .intense { background-color: #e74c3c; } /* Red */
+        .happy { background-color: #f1c40f; } /* Yellow */
+        .sad { background-color: #3498db; } /* Blue */
+        .calm { background-color: #2ecc71; } /* Green */
+
+        .log {
+            margin-top: 30px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        .log-entry {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Mood Meter</h1>
+    <div class="mood-chart">
+        <div class="mood-quadrant">
+        <!-- Intense Moods -->
+        <button class="mood-button intense" onclick="logMood('Enraged')">Enraged</button>
+        <button class="mood-button intense" onclick="logMood('Panicked')">Panicked</button>
+        <button class="mood-button intense" onclick="logMood('Stressed')">Stressed</button>
+        <button class="mood-button intense" onclick="logMood('Jittery')">Jittery</button>
+        <button class="mood-button intense" onclick="logMood('Shocked')">Shocked</button>
+        <button class="mood-button intense" onclick="logMood('Livid')">Livid</button>
+        <button class="mood-button intense" onclick="logMood('Furious')">Furious</button>
+        <button class="mood-button intense" onclick="logMood('Frustrated')">Frustrated</button>
+        <button class="mood-button intense" onclick="logMood('Tense')">Tense</button>
+        <button class="mood-button intense" onclick="logMood('Stunned')">Stunned</button>
+        <button class="mood-button intense" onclick="logMood('Fuming')">Fuming</button>
+        <button class="mood-button intense" onclick="logMood('Frightened')">Frightened</button>
+        <button class="mood-button intense" onclick="logMood('Angry')">Angry</button>
+        <button class="mood-button intense" onclick="logMood('Nervous')">Nervous</button>
+        <button class="mood-button intense" onclick="logMood('Restless')">Restless</button>
+        <button class="mood-button intense" onclick="logMood('Anxious')">Anxious</button>
+        <button class="mood-button intense" onclick="logMood('Apprehensive')">Apprehensive</button>
+        <button class="mood-button intense" onclick="logMood('Worried')">Worried</button>
+        <button class="mood-button intense" onclick="logMood('Irritated')">Irritated</button>
+        <button class="mood-button intense" onclick="logMood('Annoyed')">Annoyed</button>
+        <button class="mood-button intense" onclick="logMood('Repulsed')">Repulsed</button>
+        <button class="mood-button intense" onclick="logMood('Troubled')">Troubled</button>
+        <button class="mood-button intense" onclick="logMood('Concerned')">Concerned</button>
+        <button class="mood-button intense" onclick="logMood('Uneasy')">Uneasy</button>
+        <button class="mood-button intense" onclick="logMood('Peeved')">Peeved</button>
+        </div>
+        <div class="mood-quadrant">
+        <!-- Happy Moods -->
+        <button class="mood-button happy" onclick="logMood('Surprised')">Surprised</button>
+        <button class="mood-button happy" onclick="logMood('Upbeat')">Upbeat</button>
+        <button class="mood-button happy" onclick="logMood('Festive')">Festive</button>
+        <button class="mood-button happy" onclick="logMood('Exhilarated')">Exhilarated</button>
+        <button class="mood-button happy" onclick="logMood('Ecstatic')">Ecstatic</button>
+        <button class="mood-button happy" onclick="logMood('Hyper')">Hyper</button>
+        <button class="mood-button happy" onclick="logMood('Cheerful')">Cheerful</button>
+        <button class="mood-button happy" onclick="logMood('Motivated')">Motivated</button>
+        <button class="mood-button happy" onclick="logMood('Inspired')">Inspired</button>
+        <button class="mood-button happy" onclick="logMood('Elated')">Elated</button>
+        <button class="mood-button happy" onclick="logMood('Energized')">Energized</button>
+        <button class="mood-button happy" onclick="logMood('Lively')">Lively</button>
+        <button class="mood-button happy" onclick="logMood('Enthusiastic')">Enthusiastic</button>
+        <button class="mood-button happy" onclick="logMood('Optimistic')">Optimistic</button>
+        <button class="mood-button happy" onclick="logMood('Excited')">Excited</button>
+        <button class="mood-button happy" onclick="logMood('Pleased')">Pleased</button>
+        <button class="mood-button happy" onclick="logMood('Happy')">Happy</button>
+        <button class="mood-button happy" onclick="logMood('Focused')">Focused</button>
+        <button class="mood-button happy" onclick="logMood('Proud')">Proud</button>
+        <button class="mood-button happy" onclick="logMood('Thrilled')">Thrilled</button>
+        <button class="mood-button happy" onclick="logMood('Pleasant')">Pleasant</button>
+        <button class="mood-button happy" onclick="logMood('Joyful')">Joyful</button>
+        <button class="mood-button happy" onclick="logMood('Hopeful')">Hopeful</button>
+        <button class="mood-button happy" onclick="logMood('Playful')">Playful</button>
+        <button class="mood-button happy" onclick="logMood('Blissful')">Blissful</button>
+        </div>
+
+        <div class="mood-quadrant">
+        <!-- Sad Moods -->
+        <button class="mood-button sad" onclick="logMood('Disgusted')">Disgusted</button>
+        <button class="mood-button sad" onclick="logMood('Glum')">Glum</button>
+        <button class="mood-button sad" onclick="logMood('Disappointed')">Disappointed</button>
+        <button class="mood-button sad" onclick="logMood('Down')">Down</button>
+        <button class="mood-button sad" onclick="logMood('Apathetic')">Apathetic</button>
+        <button class="mood-button sad" onclick="logMood('Pessimistic')">Pessimistic</button>
+        <button class="mood-button sad" onclick="logMood('Morose')">Morose</button>
+        <button class="mood-button sad" onclick="logMood('Discouraged')">Discouraged</button>
+        <button class="mood-button sad" onclick="logMood('Sad')">Sad</button>
+        <button class="mood-button sad" onclick="logMood('Bored')">Bored</button>
+        <button class="mood-button sad" onclick="logMood('Alienated')">Alienated</button>
+        <button class="mood-button sad" onclick="logMood('Miserable')">Miserable</button>
+        <button class="mood-button sad" onclick="logMood('Lonely')">Lonely</button>
+        <button class="mood-button sad" onclick="logMood('Disheartened')">Disheartened</button>
+        <button class="mood-button sad" onclick="logMood('Tired')">Tired</button>
+        <button class="mood-button sad" onclick="logMood('Despondent')">Despondent</button>
+        <button class="mood-button sad" onclick="logMood('Depressed')">Depressed</button>
+        <button class="mood-button sad" onclick="logMood('Sullen')">Sullen</button>
+        <button class="mood-button sad" onclick="logMood('Exhausted')">Exhausted</button>
+        <button class="mood-button sad" onclick="logMood('Fatigued')">Fatigued</button>
+        <button class="mood-button sad" onclick="logMood('Despair')">Despair</button>
+        <button class="mood-button sad" onclick="logMood('Hopeless')">Hopeless</button>
+        <button class="mood-button sad" onclick="logMood('Desolate')">Desolate</button>
+        <button class="mood-button sad" onclick="logMood('Spent')">Spent</button>
+        <button class="mood-button sad" onclick="logMood('Drained')">Drained</button>
+        </div>
+
+        <div class="mood-quadrant">
+        <!-- Calm Moods -->
+        <button class="mood-button calm" onclick="logMood('At Ease')">At Ease</button>
+        <button class="mood-button calm" onclick="logMood('Easygoing')">Easygoing</button>
+        <button class="mood-button calm" onclick="logMood('Content')">Content</button>
+        <button class="mood-button calm" onclick="logMood('Loving')">Loving</button>
+        <button class="mood-button calm" onclick="logMood('Fulfilled')">Fulfilled</button>
+        <button class="mood-button calm" onclick="logMood('Calm')">Calm</button>
+        <button class="mood-button calm" onclick="logMood('Secure')">Secure</button>
+        <button class="mood-button calm" onclick="logMood('Satisfied')">Satisfied</button>
+        <button class="mood-button calm" onclick="logMood('Grateful')">Grateful</button>
+        <button class="mood-button calm" onclick="logMood('Touched')">Touched</button>
+        <button class="mood-button calm" onclick="logMood('Relaxed')">Relaxed</button>
+        <button class="mood-button calm" onclick="logMood('Chill')">Chill</button>
+        <button class="mood-button calm" onclick="logMood('Restful')">Restful</button>
+        <button class="mood-button calm" onclick="logMood('Blessed')">Blessed</button>
+        <button class="mood-button calm" onclick="logMood('Balanced')">Balanced</button>
+        <button class="mood-button calm" onclick="logMood('Mellow')">Mellow</button>
+        <button class="mood-button calm" onclick="logMood('Thoughtful')">Thoughtful</button>
+        <button class="mood-button calm" onclick="logMood('Peaceful')">Peaceful</button>
+        <button class="mood-button calm" onclick="logMood('Comfy')">Comfy</button>
+        <button class="mood-button calm" onclick="logMood('Carefree')">Carefree</button>
+        <button class="mood-button calm" onclick="logMood('Sleepy')">Sleepy</button>
+        <button class="mood-button calm" onclick="logMood('Complacent')">Complacent</button>
+        <button class="mood-button calm" onclick="logMood('Tranquil')">Tranquil</button>
+        <button class="mood-button calm" onclick="logMood('Cozy')">Cozy</button>
+        <button class="mood-button calm" onclick="logMood('Serene')">Serene</button>
+        </div>
+    </div>
+
+    <div class="log" id="moodLog">
+        <h2>Today's Moods</h2>
+        <div id="logEntries"></div>
+    </div>
+
+    <script>
+        function logMood(mood) {
+            const logEntries = document.getElementById('logEntries');
+
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.textContent = `${new Date().toLocaleTimeString()} - Mood: ${mood}`;
+
+            logEntries.prepend(entry);
+        }
+    </script>
+</body>
+</html>
