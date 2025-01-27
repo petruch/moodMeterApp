@@ -17,43 +17,35 @@
             background: #f5f7fa;
             color: #333;
             overflow-y: auto;
+            height:100%;
+            width:100%;
         }
 
         h1 {
             margin-bottom: 20px;
         }
-        .mood-chart {
+        .mood-chart { 
+            width: 100%;
+            min-width: 400px;
+            position: sticky;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 4px;
+            justify-items: stretch;
+            align-items: stretch;
+
             
-    width: 100%;
-    height: calc(100vh - 115px);
-    min-width: 400px;
-    position: relative;
-    display: grid
-;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 4px;
-    justify-items: stretch;
-    align-items: stretch;
         }
         .mood-quadrant {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 4px;
-    justify-items: stretch;
-    align-items: stretch;
-    border-radius: 4px;
-}
-
-        .mood-container {
+            position: relative;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 6px;
-            justify-content: center;
-            width: 80%;
-            
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            grid-gap: 4px;
+            justify-items: stretch; 
+            align-items: stretch; 
+            border-radius: 4px;
         }
 
         .mood-button {
@@ -86,6 +78,7 @@
             margin-top: 30px;
             width: 80%;
             max-width: 400px;
+            max-height: 400px;
             text-align: center;
             overflow-y: auto;
         }
